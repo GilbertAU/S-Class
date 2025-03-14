@@ -8,7 +8,7 @@ public class PlayerJump : MonoBehaviour
     public float jumpForce;
     public bool isGrounded;
     public int totalJump;
-    private Rigidbody rb;
+    private Rigidbody2b rb;
     [HideInInspector]public int currentTotalJump = 0;
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,7 @@ public class PlayerJump : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            rb.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
             currentTotalJump++;
             if (currentTotalJump >= totalJump)
             {
