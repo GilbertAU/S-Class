@@ -30,14 +30,12 @@ public class Fireball_S : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        /* kalo musu kena
-         * if(other.CompareTag("Enemy"){
-         * other.GetComponent<IDamageable>().TakeDamage(damage);
-         * Destroy(gameObject);
-         * }
-         * if(other.CompareTag("Wall){
-         * Destroy(gameObject);
-         * }
-        */
+         if(other.CompareTag("Enemy")){
+         other.GetComponent<IDamageable>().TakeDamage(damage);
+         Destroy(gameObject);
+         }
+         if(other.CompareTag("Wall")){
+         Destroy(gameObject);
+         }
     }
 }
