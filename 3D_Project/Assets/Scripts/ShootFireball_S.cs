@@ -1,21 +1,23 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 public class ShootFireball_S : MonoBehaviour
 {
     public GameObject fireballObject;
     public float fireballCooldown;
     private float currentCooldown;
-
+    // Start is called before the first frame update
     void Start()
     {
         currentCooldown = fireballCooldown;
     }
 
+    // Update is called once per frame
     void Update()
     {
         currentCooldown -= Time.deltaTime;
-        if (Input.GetKeyDown(Keycode.E) && currentCooldown <= 0)
+        if (Input.GetKey(KeyCode.E) && currentCooldown <= 0)
         {
             currentCooldown = fireballCooldown;
             Instantiate(fireballObject, transform.position, Quaternion.Euler(transform.rotation));

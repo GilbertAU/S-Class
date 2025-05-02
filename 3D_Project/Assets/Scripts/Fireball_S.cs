@@ -25,7 +25,7 @@ public class Fireball_S : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = Vector3.forward * fireballSpeed;
+        rb.velocity = new Vector3(fireballSpeed, rb.position.y, fireballSpeed);
     }
 
     void OnTriggerEnter(Collider other)
