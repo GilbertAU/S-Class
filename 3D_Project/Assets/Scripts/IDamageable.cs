@@ -6,9 +6,9 @@ public interface IDamageable
 {
     public float health { get; set; }
 
-    public void TakeDamage()
+    public void TakeDamage(float damage)
     {
-
+        health = damage;
     }
     
 }
