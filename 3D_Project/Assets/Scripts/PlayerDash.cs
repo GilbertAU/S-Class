@@ -1,6 +1,5 @@
-using JetBrains.Annotations;
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerDash : Player
@@ -9,21 +8,30 @@ public class PlayerDash : Player
     public float dashCooldown;
     private Rigidbody rb;
     private float currentDashCooldown;
-    // Start is called before the first frame update
+    private TrailRenderer trailRenderer;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         currentDashCooldown = dashCooldown;
+        trailRenderer = GetComponent<TrailRenderer>();
     }
 
-    // Update is called once per frame
     private void Update()
     {
         currentDashCooldown -= Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.LeftShift) && currentDashCooldown <= 0)
         {
-            rb.AddForce(GetComponent<playerMoves>().moveDirection * dashDistance, ForceMode.Impulse);
+            rb.AddForce(GetComponent<PlayerMovement>().moveDirection * dashDistance, ForceMode.Impulse);
             currentDashCooldown = dashCooldown;
+            trailRenderer.enabled = true;
+            StartCoroutine(TrailRenderDelay());
         }
+    }
+
+    IEnumerator TrailRenderDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+        trailRenderer.enabled = false;
     }
 }

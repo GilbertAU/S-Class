@@ -8,7 +8,6 @@ public interface IDamageable
 
     public void TakeDamage(float damage)
     {
-        health = damage;
+        health -= damage;
     }
-    
 }
