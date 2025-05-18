@@ -103,14 +103,14 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemymoveable, ITriggerCheckab
     {
         if (IsFacingRight && velocity.x < 0f)
         {
-            Vector3 rotator = new Vector3(transform.rotation.x, 100f, transform.rotation.z);
+            Vector3 rotator = new Vector3(transform.rotation.x, 1f, transform.rotation.z);
             transform.rotation = Quaternion.Euler(rotator);
             IsFacingRight = !IsFacingRight;
         }
 
         else if (IsFacingRight && velocity.x > 0f)
         {
-            Vector3 rotator = new Vector3(transform.rotation.x, 100f, transform.rotation.z);
+            Vector3 rotator = new Vector3(transform.rotation.x, 1f, transform.rotation.z);
             transform.rotation = Quaternion.Euler(rotator);
             IsFacingRight = !IsFacingRight;
         }
