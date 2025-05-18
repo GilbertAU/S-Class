@@ -12,9 +12,8 @@ public class EnemyBullet : MonoBehaviour
             if (collision.TryGetComponent<IDamageable>(out IDamageable damageable))
             {
                 damageable.Damage(damage);
+                Destroy(gameObject);
             }
-
-            Destroy(gameObject);
         }
     }
 }
