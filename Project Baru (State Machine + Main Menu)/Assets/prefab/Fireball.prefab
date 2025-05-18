@@ -161,6 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 195774af5488feb4581111f043c3e352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireballSpeed: 5
-  damage: 3
-  graceDuration: 2
+  fireballSpeed: 10
+  damage: 4
+  graceDuration: 1

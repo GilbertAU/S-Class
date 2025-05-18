@@ -15,6 +15,7 @@ public class EnemyAttackState : EnemyState
     private float _distanceToCountExit = 3f;
 
     private float _bulletSpeed = 10f;
+    private float _bulletDuration = 5f;
     public EnemyAttackState(Enemy enemy, EnemyStateMachine enemyStateMachine) : base(enemy, enemyStateMachine)
     {
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
@@ -49,6 +50,8 @@ public class EnemyAttackState : EnemyState
 
             Rigidbody2D bullet = GameObject.Instantiate(enemy.BulletPrefab, enemy.transform.position, Quaternion.identity);
             bullet.velocity = dir * _bulletSpeed;
+
+            GameObject.Destroy(bullet.gameObject, _bulletDuration);
         }
 
         if (Vector2.Distance(_playerTransform.position, enemy.transform.position) > _distanceToCountExit)

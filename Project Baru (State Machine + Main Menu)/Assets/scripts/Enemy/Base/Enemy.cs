@@ -16,6 +16,10 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemymoveable, ITriggerCheckab
     public EnemyIdleState IdleState { get; set; }
     public EnemyChaseState ChaseState { get; set; }
     public EnemyAttackState AttackState { get; set; }
+    public EnemyRecoveryState RecoveryState { get; set; }
+    public EnemyLowState LowState { get; set; }
+    public SpriteRenderer SpriteRenderer { get; set; }
+
     public bool IsAgroed { get; set; }
     public bool IsWithinStrikingDistance { get; set; }
 
@@ -36,6 +40,9 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemymoveable, ITriggerCheckab
         IdleState = new EnemyIdleState(this, StateMachine);
         ChaseState = new EnemyChaseState(this, StateMachine);
         AttackState = new EnemyAttackState(this, StateMachine);
+        RecoveryState = new EnemyRecoveryState(this, StateMachine);
+        LowState = new EnemyLowState(this, StateMachine);
+        SpriteRenderer = GetComponent<SpriteRenderer>();
     }
     public void Start()
     {
@@ -64,6 +71,16 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemymoveable, ITriggerCheckab
         if (CurrentHealth <= 0f)
         {
             Die();
+            return;
+        }
+
+        if (CurrentHealth < MaxHealth * 0.5f)
+        {
+            StateMachine.ChangeState(LowState);
+        }
+        else if (CurrentHealth < MaxHealth * 0.8f)
+        {
+            StateMachine.ChangeState(RecoveryState);
         }
     }
     public void Die()
