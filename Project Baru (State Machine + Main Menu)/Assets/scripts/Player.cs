@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Player : MonoBehaviour, IDamageable
 {
@@ -6,6 +7,7 @@ public class Player : MonoBehaviour, IDamageable
     public float CurrentHealth { get; set; }
 
     public HealthBar healthBar;
+    //public Animator animator;
 
     void Start()
     {
@@ -16,6 +18,7 @@ public class Player : MonoBehaviour, IDamageable
     public void Damage(float damageAmount)
     {
         CurrentHealth -= damageAmount;
+        //animator.SetBool("Player_Hurt", true);
         Debug.Log("Player terkena damage. Sisa HP: " + CurrentHealth);
 
         healthBar.SetHealth(CurrentHealth);
@@ -27,11 +30,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Die()
     {
+        gameObject.SetActive(false);
         Debug.Log("Player has died.");
-    }
-
-    void Update()
-    {
-
     }
 }

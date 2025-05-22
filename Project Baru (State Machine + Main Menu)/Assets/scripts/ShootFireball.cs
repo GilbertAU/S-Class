@@ -4,11 +4,15 @@ public class ShootFireball : MonoBehaviour
 {
     public GameObject fireballObject;
     public float fireballCooldown;
+    public float fireballSpeed = 10f;
+
     private float currentCooldown;
+    private PlayerMovement playerMovement;
 
     void Start()
     {
         currentCooldown = fireballCooldown;
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     void Update()
@@ -17,7 +21,12 @@ public class ShootFireball : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && currentCooldown <= 0)
         {
             currentCooldown = fireballCooldown;
-            Instantiate(fireballObject, transform.position, transform.rotation);
+
+            float direction = playerMovement.LastMoveDirection;
+            Vector2 fireballDirection = new(direction, 0);
+
+            GameObject fireball = Instantiate(fireballObject, transform.position, Quaternion.identity);
+            fireball.GetComponent<Fireball>().Initialize(fireballDirection, fireballSpeed);
         }
     }
 }

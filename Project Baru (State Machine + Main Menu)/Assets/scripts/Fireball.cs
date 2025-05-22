@@ -1,17 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Fireball : MonoBehaviour
 {
-    public float fireballSpeed;
     public float damage;
     public float graceDuration;
     private Rigidbody2D rb;
+    private Vector2 moveDirection;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    public void Initialize(Vector2 direction, float speed)
+    {
+        moveDirection = direction.normalized * speed;
     }
 
     void Update()
@@ -25,11 +28,16 @@ public class Fireball : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(fireballSpeed, 0);
+        rb.velocity = moveDirection;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (!other.CompareTag("Enemy"))
+        {
+            return;
+        }
+
         if (other.GetComponent<IDamageable>() == null)
         {
             return;

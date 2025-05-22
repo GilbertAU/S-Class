@@ -1517,6 +1517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireballObject: {fileID: 3069431525330361449, guid: 1f54481f66dd99143b538bc51719dd05, type: 3}
   fireballCooldown: 1
+  fireballSpeed: 10
 --- !u!95 &1686794762
 Animator:
   serializedVersion: 5
@@ -1857,7 +1858,7 @@ GameObject:
   - component: {fileID: 2091577535}
   m_Layer: 0
   m_Name: Eagle
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

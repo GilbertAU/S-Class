@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer sprite;
 
     private float lastMoveDirection = 1;
+    public float LastMoveDirection => lastMoveDirection;
 
     private void Start()
     {
