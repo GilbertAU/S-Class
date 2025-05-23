@@ -7,7 +7,7 @@ public class Player : MonoBehaviour, IDamageable
     public float CurrentHealth { get; set; }
 
     public HealthBar healthBar;
-    //public Animator animator;
+    public Animator animator;
 
     void Start()
     {
@@ -18,7 +18,7 @@ public class Player : MonoBehaviour, IDamageable
     public void Damage(float damageAmount)
     {
         CurrentHealth -= damageAmount;
-        //animator.SetBool("Player_Hurt", true);
+        animator.SetTrigger("Hurt");
         Debug.Log("Player terkena damage. Sisa HP: " + CurrentHealth);
 
         healthBar.SetHealth(CurrentHealth);

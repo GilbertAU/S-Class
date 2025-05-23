@@ -41,6 +41,7 @@ public class EnemyAttackState : EnemyState
         base.FrameUpdate();
 
         enemy.MoveEnemy(Vector2.zero);
+        enemy.animator.SetTrigger("IsAttack");
 
         if (_timer > _timeBetweenShots)
         {

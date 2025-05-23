@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemymoveable, ITriggerCheckab
     public float CurrentHealth { get; set; }
     public Rigidbody2D RB { get; set; }
     public bool IsFacingRight { get; set; } = true;
+    public Animator animator;
 
     #region State Machine Variables
     public EnemyStateMachine StateMachine { get; set; }
@@ -35,6 +36,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemymoveable, ITriggerCheckab
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         StateMachine = new EnemyStateMachine();
 
         IdleState = new EnemyIdleState(this, StateMachine);
@@ -67,6 +69,8 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemymoveable, ITriggerCheckab
     public void Damage(float damageAmount)
     {
         CurrentHealth -= damageAmount;
+        animator.SetTrigger("IsDamaged");
+        animator.SetBool("NotDamaged", false);
 
         if (CurrentHealth <= 0f)
         {
@@ -97,6 +101,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemymoveable, ITriggerCheckab
     {
         RB.velocity = velocity;
         CheckForLeftorRightFacing(velocity);
+        animator.SetBool("NotDamaged", true);
     }
 
     public void CheckForLeftorRightFacing(Vector2 velocity)

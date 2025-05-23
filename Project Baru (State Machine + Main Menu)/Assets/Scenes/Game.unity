@@ -1553,6 +1553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 100
   healthBar: {fileID: 1987884562}
+  animator: {fileID: 1686794762}
 --- !u!1 &1771720133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1665,7 +1666,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -288.6, y: 175.6}
+  m_AnchoredPosition: {x: -440, y: 298}
   m_SizeDelta: {x: 212.9181, y: 26.3473}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1987884562
@@ -1856,6 +1857,7 @@ GameObject:
   - component: {fileID: 2091577537}
   - component: {fileID: 2091577536}
   - component: {fileID: 2091577535}
+  - component: {fileID: 2091577538}
   m_Layer: 0
   m_Name: Eagle
   m_TagString: Enemy
@@ -2016,9 +2018,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 10
+  animator: {fileID: 2091577538}
   BulletPrefab: {fileID: 189688844084994228, guid: e0e180b55cc810a49a30b573b00bab31, type: 3}
   RandomMovementRange: 5
   RandomMovementSpeed: 1
+--- !u!95 &2091577538
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091577529}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c0786660a4411a443b6885345703fa95, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
